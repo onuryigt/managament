@@ -30,7 +30,19 @@ app.get('/', (req, res) => {
     res.send('Hello, world!');
 });
 
-const PORT = process.env.PORT || 4002;
+const express = require('express');
+const path = require('path');
+const app = express();
+const PORT = process.env.PORT || 4000;
+
+// Statik dosyalar için
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Diğer middleware ve route tanımlamaları
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 // Dosya yükleme için multer konfigürasyonu
 const storage = multer.diskStorage({
@@ -363,7 +375,7 @@ const app = express();
 app.use(cors());
 // Diğer middleware ve route tanımlamaları burada
 
-const PORT = process.env.PORT || 4002;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

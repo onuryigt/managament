@@ -249,10 +249,8 @@ app.get('/api/chart-data', (req, res) => {
   res.json(chartData);
 });
 
-// Statik dosyalar için
-app.use(express.static(path.join(__dirname, 'build')));
-
+// Server'ı başlat
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });

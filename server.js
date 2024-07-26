@@ -6,9 +6,6 @@ const bcrypt = require('bcrypt');
 const multer = require('multer');
 const path = require('path');
 
-const app = express();
-const port = process.env.PORT || 4002;
-
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -35,7 +32,7 @@ app.get('/', (req, res) => {
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4002;
 
 // Statik dosyalar için
 app.use(express.static(path.join(__dirname, 'build')));

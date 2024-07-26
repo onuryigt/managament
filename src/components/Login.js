@@ -53,7 +53,7 @@ function Login() {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('https://managament-nz32.vercel.app//login', { password });
+            const response = await axios.post('https://managament-nz32.vercel.app/login', { password });
             const { token } = response.data;
             localStorage.setItem('token', token);
             navigate('/manager');

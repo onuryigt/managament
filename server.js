@@ -7,15 +7,17 @@ const multer = require('multer');
 const path = require('path');
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+const port = process.env.PORT || 4002;
 
-// Veritabanı bağlantısı
+app.use(cors());
+app.use(bodyParser.json());
+
+// MySQL bağlantısı
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'onur',
-    password: 'S8ec87syf2jF',
-    database: 'restaurant_management',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 db.connect(err => {
@@ -375,7 +377,3 @@ const app = express();
 app.use(cors());
 // Diğer middleware ve route tanımlamaları burada
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});

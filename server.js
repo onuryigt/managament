@@ -1,38 +1,32 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const multer = require('multer');
-const path = require('path');
+const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-// MySQL bağlantısı
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
 });
 
-db.connect(err => {
-    if (err) {
-        console.error('Database connection failed: ' + err.stack);
-        return;
-    }
-    console.log('Connected to database.');
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to the database:', err);
+    return;
+  }
+  console.log('Connected to the database');
 });
 
-app.get('/', (req, res) => {
-    res.send('Hello, world!');
-});
+// Diğer API endpoint'leri burada tanımlayın...
 
-const express = require('express');
-const path = require('path');
-const app = express();
-const PORT = process.env.PORT || 4002;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 // Statik dosyalar için
 app.use(express.static(path.join(__dirname, 'build')));

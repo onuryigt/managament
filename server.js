@@ -360,11 +360,5 @@ app.get('/api/chart-data', (req, res) => {
     };
 
     res.json(chartData);
-});
-const express = require('express');
-const cors = require('cors');
-const app = express();
 
-app.use(cors());
-// Diğer middleware ve route tanımlamaları burada
 

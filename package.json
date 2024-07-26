@@ -1,7 +1,12 @@
 {
   "name": "restaurant-management",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "build": "react-scripts build",
+    "heroku-postbuild": "npm run build"
+  },
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
@@ -25,11 +30,6 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "node server.js",
-    "build": "react-scripts build",
-    "serve": "serve -s build"
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -47,10 +47,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "server.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }

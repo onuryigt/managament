@@ -217,12 +217,13 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 // Veritabanı Test Endpoint'i
 app.get('/api/db-test', (req, res) => {
-  connection.query('SELECT 1', (err, results) => {
-      if (err) {
-          console.error('Error testing the database:', err);
-          return res.status(500).send('Error testing the database');
-      }
-      res.status(200).send('Database connection is working');
+  const query = 'SELECT 1';
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error('Database connection test failed:', err);
+      return res.status(500).send('Database connection test failed');
+    }
+    res.status(200).send('Database connection test succeeded');
   });
 });
 

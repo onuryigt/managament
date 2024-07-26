@@ -5,7 +5,8 @@
   "scripts": {
   "start": "node server.js",
   "build": "react-scripts build",
-  "serve": "serve -s build"
+  "heroku-postbuild": "CI=false npm run build"
+}
   },
   "dependencies": {
     "@emotion/react": "^11.13.0",

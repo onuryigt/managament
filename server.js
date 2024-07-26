@@ -248,7 +248,16 @@ app.get('/api/chart-data', (req, res) => {
 
   res.json(chartData);
 });
-
+// DB Test Endpoint'i
+app.get('/api/db-test', (req, res) => {
+  connection.query('SELECT 1', (err, results) => {
+      if (err) {
+          console.error('Error executing query:', err);
+          return res.status(500).send('Database connection test failed');
+      }
+      res.status(200).send('Database connection test succeeded');
+  });
+});
 // Server'ı başlat
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

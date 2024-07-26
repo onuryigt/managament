@@ -338,6 +338,18 @@ app.get('/api/chart-data', (req, res) => {
   };
   res.json(chartData);
 });
+// Veritabanı bağlantısı için test endpoint'i
+app.get('/api/db-test', (req, res) => {
+  const testQuery = 'SELECT 1 + 1 AS result';
+
+  connection.query(testQuery, (err, results) => {
+    if (err) {
+      console.error('Database test error:', err);
+      return res.status(500).json({ message: 'Database test error', error: err });
+    }
+    res.status(200).json({ message: 'Database connection successful', result: results });
+  });
+});
 
 // Statik dosyalar için
 app.use(express.static(path.join(__dirname, 'build')));
